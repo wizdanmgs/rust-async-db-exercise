@@ -1,0 +1,20 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT original_url FROM urls WHERE code = ?",
+  "describe": {
+    "columns": [
+      {
+        "name": "original_url",
+        "ordinal": 0,
+        "type_info": "Text"
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "c0f7ddb2970ead82aacb8012b88f5baa36461a51d8135cb4df10fcf09792ff48"
+}
