@@ -12,6 +12,9 @@ pub enum AppError {
     #[error("Invalid URL")]
     InvalidUrl,
 
+    #[error("Url scheme must be http or https")]
+    InvalidScheme,
+
     #[error("Not found")]
     NotFound,
 }
@@ -20,7 +23,7 @@ impl IntoResponse for AppError {
     fn into_response(self) -> Response {
         let status = match self {
             AppError::Database(_) => StatusCode::INTERNAL_SERVER_ERROR,
-            AppError::InvalidUrl => StatusCode::BAD_REQUEST,
+            AppError::InvalidUrl | AppError::InvalidScheme => StatusCode::BAD_REQUEST,
             AppError::NotFound => StatusCode::NOT_FOUND,
         };
 

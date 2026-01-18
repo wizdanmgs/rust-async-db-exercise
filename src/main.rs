@@ -3,6 +3,7 @@ mod errors;
 mod models;
 mod routes;
 mod state;
+mod validators;
 
 use axum::Router;
 use state::AppState;

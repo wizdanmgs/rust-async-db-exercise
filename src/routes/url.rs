@@ -8,12 +8,15 @@ use crate::{
     errors::AppError,
     models::{ShortenRequest, ShortenResponse},
     state::AppState,
+    validators::validate_and_normalize,
 };
 
 pub async fn shorten_url(
     State(state): State<AppState>,
     Json(payload): Json<ShortenRequest>,
 ) -> Result<Json<ShortenResponse>, AppError> {
+    validate_and_normalize(&payload.url)?;
+
     let code = Uuid::new_v4().to_string()[..6].to_string();
 
     sqlx::query!(
